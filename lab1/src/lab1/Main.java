@@ -1,20 +1,15 @@
 package lab1;
 
-import java.util.Iterator;
-
 public class Main {
 	public static void main(String[] args) {
-		LinkedList<Integer> smth = new LinkedList<Integer>();
+		MyLinkedList<Integer> smth = new MyLinkedList<Integer>();
 		for(int i = 0; i < 10; i++) {
-			smth.add(i);
+			smth.addLast(i);
 		}
 		System.out.println(smth.size());
-		Iterator<Integer> iter = smth.iterator();
 		System.out.println("----------------------");
-		for(int i = 0; i < 10; i++) {
-			if(iter.hasNext()) {
-				System.out.println(iter.next());
-			}
+		for(Integer el : smth) {
+			System.out.println(el + " ]]");
 		}
 		/*Iterator<Integer> iter2 = smth.iterator();
 		if(iter2.hasNext()) {

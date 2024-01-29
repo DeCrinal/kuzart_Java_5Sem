@@ -4,5 +4,6 @@
 /**
  * 
  */
-module lab1 {
+module lab1{
+	requires org.junit.jupiter.api;
 }
