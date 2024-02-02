@@ -72,28 +72,33 @@ public class MyLinkedList<T>  implements Iterable<T>{
 	
 	@Override
 	public Iterator<T> iterator() {
-		return new ListIterator();
+		return new MyListIterator();
 	}
 	
 	public void remove(T value){
-		Iterator<T> iter = this.iterator();
-		while(iter.hasNext()) {
-			if(iter.next() == value) {
-				iter.remove();
+		MyLinkedListNode<T> currentNode = mHead.getNext();
+		MyLinkedListNode<T> prevNode = mHead;
+		while(currentNode != mTail) {
+			if(currentNode.getData().equals(value)) {
+				prevNode.setNextNode(currentNode.getNext());
+				currentNode.getNext().setPreviousNode(prevNode);
 				mSize--;
 			}
+
+			currentNode = currentNode.getNext();
+			prevNode = currentNode.getPrevious();
 		}
 	}
 	/**
 	 * Class ListIterator implements Iterator interface with it's
 	 * default methods*/
- 	public class ListIterator implements Iterator<T>{
+ 	public class MyListIterator implements Iterator<T>{
 		private MyLinkedListNode<T> mCurrentNode;
-		ListIterator() {
+		public MyListIterator() {
 			if(mHead == null) {
 				throw new NoSuchElementException("Exception of accessing null element");
 			}
-			mCurrentNode = mHead.getNext();
+			mCurrentNode =  MyLinkedList.this.mHead.getNext();
 		}
 
 		public final T value() {
@@ -129,6 +134,4 @@ public class MyLinkedList<T>  implements Iterable<T>{
 		    return element;
 		}
 	}
-
-	
 }

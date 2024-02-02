@@ -2,24 +2,24 @@ package lab1;
 
 public class Main {
 	public static void main(String[] args) {
-		MyLinkedList<Integer> smth = new MyLinkedList<Integer>();
-		for(int i = 0; i < 10; i++) {
-			smth.addLast(i);
+		MyLinkedList<Integer> testList = new MyLinkedList<Integer>();
+		for(int i = 0; i < 6; i++) {
+			testList.addLast(i);
 		}
-		System.out.println(smth.size());
+		testList.addFirst(5);
+		testList.addFirst(5);
+		System.out.println("Size:" + testList.size());
+		System.out.println("-----Elements:--------");
+		for(Integer el : testList) {
+			System.out.println(el);
+		}
 		System.out.println("----------------------");
-		for(Integer el : smth) {
-			System.out.println(el + " ]]");
+		
+		testList.remove(5);
+		System.out.println("-----Removed (5):-----");
+		for(Integer el : testList) {
+			System.out.println(el);
 		}
-		/*Iterator<Integer> iter2 = smth.iterator();
-		if(iter2.hasNext()) {
-			iter2.next();
-		}
-		iter2.remove();
-		iter = smth.iterator();
 		System.out.println("----------------------");
-		while(iter.hasNext()) {
-				System.out.println(iter.next());
-		}*/
 	}
 }
